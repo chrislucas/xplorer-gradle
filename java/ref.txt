@@ -1,0 +1,8 @@
+https://docs.gradle.org/current/userguide/custom_plugins.html
+https://guides.gradle.org/implementing-gradle-plugins/
+https://www.tutorialspoint.com/gradle/gradle_plugins.htm
+https://www.praqma.com/stories/gradle-plugin-bootstrap/
+https://github.com/groovy/groovy-android-gradle-plugin
+
+https://www.jetbrains.org/intellij/sdk/docs/tutorials/build_system.html
+https://www.jetbrains.org/intellij/sdk/docs/tutorials/build_system/prerequisites.html
