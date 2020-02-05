@@ -80,6 +80,4 @@ build.gradle
 gradle/
 gradlew
 gradlew.bat
-raw/
 settings.gradle
-src/
