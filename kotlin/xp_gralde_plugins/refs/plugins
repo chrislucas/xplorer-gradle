@@ -1,0 +1,31 @@
+https://docs.gradle.org/5.2.1/userguide/plugins.html#sec:plugins_block
+https://docs.gradle.org/current/userguide/plugins.html
+https://docs.gradle.org/current/userguide/application_plugin.html
+
+Custom plugins
+https://docs.gradle.org/current/userguide/custom_plugins.html
+https://guides.gradle.org/implementing-gradle-plugins/
+https://docs.gradle.org/current/userguide/plugins.html
+
+FindBugs
+http://findbugs.sourceforge.net/
+https://stackoverflow.com/questions/29967309/findbugs-android-gradle-plugin
+https://github.com/findbugsproject/findbugs
+https://spotbugs.github.io/
+https://medium.com/fantageek/how-to-setup-android-projects-8c306aaeb519
+https://findbugs-android.chaitanyapramod.com/
+https://medium.com/mindorks/static-code-analysis-for-android-using-findbugs-pmd-and-checkstyle-3a2861834c6a
+
+** https://findbugs-android.chaitanyapramod.com/
+
+Tasks no gradle
+https://docs.gradle.org/current/dsl/org.gradle.api.Task.html
+
+Developing Custom Gradle Task Types
+https://docs.gradle.org/current/userguide/custom_tasks.html
+
+Annotation Processing with Kotlin
+https://kotlinlang.org/docs/reference/kapt.html
+
+Pesquisar por
+write checkstyle in java module android

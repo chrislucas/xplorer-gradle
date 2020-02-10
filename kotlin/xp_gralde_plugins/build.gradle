@@ -1,0 +1,6 @@
+class CustomTask extends DefaultTask {
+}
+
+task SimpleEcho {
+    println(0xff)
+}

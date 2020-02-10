@@ -6,3 +6,6 @@ https://github.com/groovy/groovy-android-gradle-plugin
 
 https://www.jetbrains.org/intellij/sdk/docs/tutorials/build_system.html
 https://www.jetbrains.org/intellij/sdk/docs/tutorials/build_system/prerequisites.html
+
+Pesquisa por
+write plugin for gradle intllij

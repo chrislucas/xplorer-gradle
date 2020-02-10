@@ -2,3 +2,6 @@ https://kotlinlang.org/docs/reference/using-gradle.html#plugin-and-versions
 
 // link tutorial
 https://dagger.dev/tutorial/01-setup
+
+Annotation processing with kotlin
+https://kotlinlang.org/docs/reference/kapt.html

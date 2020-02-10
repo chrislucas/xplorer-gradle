@@ -1,16 +1,32 @@
+import javax.inject.Inject
 
-import java.util.*
+/**
+ * Uma rota/ponto por onde passam os comandos realizados pelo usuairo.
+ *
+ * */
 
-class CommandRouter {
+class CommandRouter @Inject constructor() {
 
-    companion object {
-        val commands : Map<String, Command> = Collections.EMPTY_MAP as Map<String, Command>
+    private val commands : Map<String, Command> = mapOf()
+
+    private fun invalidCommand(input: String) : StatusCommand {
+        println("[$input] is a Invalid Command")
+        return StatusCommand.INVALID
     }
 
-    fun route(input: String) : StatusCommand {
-        val splitInput = input.split(" ")
-
-        return StatusCommand.HANDLED
+    fun route(input: String, delimiter : String = " ") : StatusCommand {
+        return if (input.isEmpty()) {
+            invalidCommand("IsEmpty")
+        } else {
+            val splitInput = input.split(delimiter)
+            val key = splitInput[0]
+            commands[key]?.let {
+                val status = it.handleInput(*splitInput.subList(1, splitInput.size).toTypedArray())
+                if (status == StatusCommand.INVALID) {
+                    println("$key is a invalid argument")
+                }
+                status
+            } ?: invalidCommand(key)
+        }
     }
-
 }

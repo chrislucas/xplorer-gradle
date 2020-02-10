@@ -3,3 +3,16 @@ https://softwareengineering.stackexchange.com/questions/318518/dependency-inject
 
 tutorial dagger
 https://dagger.dev/tutorial/01-setup
+
+@Component
+https://dagger.dev/api/latest/dagger/Component.html
+
+modules() = public abstract java.lang.Class<?>[] modules
+Uma lista de cçasses amptadas como Modulos usadas para a geracao de implemencacao de componentes
+
+
+Component: Anotacao para interfaces e classes abstratas que gerara uma implementacao de injecao de dependencia
+a partir de um conjunto de modulos (veja o metodo modules() na documentacao)
+
+A classe gerada tera como nome o nome da interface/classe abstrata seguido do prefixo "Dagger"
+Exemplo @Component interface MyClass {} gerara uma classe DaggerMyClass
