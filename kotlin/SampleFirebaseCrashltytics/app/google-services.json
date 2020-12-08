@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "573959394685",
+    "firebase_url": "https://norse-journey-161414.firebaseio.com",
+    "project_id": "norse-journey-161414",
+    "storage_bucket": "norse-journey-161414.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573959394685:android:cf7ca7b3552f9d5243e814",
+        "android_client_info": {
+          "package_name": "com.br.xplorer.samplefirebasecrashltytics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573959394685-lbs63g7dqq0778b28n6mn7i9tn38kpis.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEefoGYUkNVCPzjL-Y8UnvVXOPkQO3MHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573959394685-lbs63g7dqq0778b28n6mn7i9tn38kpis.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

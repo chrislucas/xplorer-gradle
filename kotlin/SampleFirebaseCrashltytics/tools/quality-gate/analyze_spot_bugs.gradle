@@ -1,0 +1,35 @@
+spotbugs {
+
+    //sourceDirs = sourceSets.main.allSource.srcDirs
+    //classDirs = sourceSets.main.output
+    //auxClassPaths = sourceSets.main.compileClasspath
+
+    ignoreFailures = false
+    showStackTraces = true
+    showProgress = false
+    reportLevel = 'default'
+    effort = 'default'
+    visitors = [ 'FindSqlInjection', 'SwitchFallthrough' ]
+    omitVisitors = [ 'FindNonShortCircuit' ]
+    reportsDir = file("$buildDir/reports/spotbugs")
+    //includeFilter = file('spotbugs-include.xml')
+    //excludeFilter = file('spotbugs-exclude.xml')
+    //baselineFile = file('spotbugs-baseline.xml')
+    onlyAnalyze = ['com.foobar.MyClass', 'com.foobar.mypkg.*']
+    projectName = name
+    release = version
+    extraArgs = [ '-nested:false' ]
+    jvmArgs = [ '-Duser.language=ja' ]
+    maxHeapSize = '1g'
+}
+
+
+tasks.withType(SpotBugsTask) {
+
+}
+/*
+tasks.withType(com.github.spotbugs.internal.spotbugs.) {
+    dependsOn 'assemble'
+    classes = files("$projectDir.absolutePath/build/intermediates/classes/debug")
+    source = fileTree('src/main/java')
+}*/
