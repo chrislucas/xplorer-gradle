@@ -61,3 +61,17 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 }
+
+
+android.applicationVariants.all {
+    variant ->
+        println(variant)
+}
+
+task readLocalProperties {
+    def properties = rootProject.file("local.properties")
+    println(properties)
+    def kProperties = new Properties()
+    kProperties.load(new FileInputStream(properties))
+    println(kProperties)
+}

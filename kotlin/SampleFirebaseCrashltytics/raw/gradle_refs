@@ -1,16 +1,8 @@
-sourceSets
-https://developer.android.com/studio/build/gradle-tips?hl=pt-br
+Writing Build Scripts
+
+https://docs.gradle.org/current/userguide/writing_build_scripts.html
 
 
-Build
-https://developer.android.com/studio/build
+Build Script Blocks
 
-Gradle: An advanced build toolkit, to automate and manage the build process. Allow to define
-flexible custom build configurations.
-
-
-
-Tips
-https://developer.android.com/studio/build/gradle-tips
-
-
+    - SourceSet: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html

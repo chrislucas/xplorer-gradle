@@ -1,6 +1,6 @@
 sourceSets {
     main {
-        java.srcDirs = ['src/main/java']
+        java.srcDirs = []
     }
 }
 
@@ -17,7 +17,7 @@ spotbugs {
     effort = 'max'
     //visitors = [ 'FindSqlInjection', 'SwitchFallthrough' ]
     //omitVisitors = [ 'FindNonShortCircuit' ]
-    reportsDir = file("$buildDir/reports/spotbugs")
+    reportsDir = file("${project.buildDir}/reports/spotbugs")
     //includeFilter = file('spotbugs-include.xml')
     //excludeFilter = file('spotbugs-exclude.xml')
     //baselineFile = file('spotbugs-baseline.xml')

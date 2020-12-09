@@ -1,0 +1,23 @@
+android gradle DSL guide
+
+
+Docs
+https://docs.gradle.org/current/dsl/index.html
+https://docs.gradle.org/current/userguide/kotlin_dsl.html
+
+Guides
+https://gradle.org/guides/
+
+Android Plugin DSL Reference
+https://google.github.io/android-gradle-dsl/3.4/
+
+
+Manual
+https://docs.gradle.org/current/userguide/userguide.pdf
+
+
+Tutorial
+https://antonioleiva.com/kotlin-dsl-gradle/
+
+Build Script Basics
+https://docs.gradle.org/current/userguide/tutorial_using_tasks.html
