@@ -1,0 +1,63 @@
+Configure Build Variants
+https://developer.android.com/studio/build/build-variants
+
+If we want to create different versions of our app to appear in a separate list on Google play
+, we need to create separate build variants, each with its own application ID
+
+    - each build flavor/type can be define a suffix for applicationId or completely redefine
+    the applicationId defined in defaultConfig block
+
+    - By the fact that gradle applies the build type configuration after product flavor, if we define
+    applicationIdSuffix in both properties, the result will be:
+        "*.suffix_product_flavor.suffix_build_type"
+
+        For example:
+
+        buildTypes {
+            debug {
+                applicationIdSuffix ".debug"
+            }
+        }
+        productFlavor {
+            free {
+                applicationIdSuffix ".free"
+            }
+        }
+
+        com.br.product.free.debug
+
+
+Change application ID for testing
+https://developer.android.com/studio/build/application-id#change_the_application_id_for_testing
+
+By default the build tools apply an application ID to the instrumented test APK using the application
+ID defined in a respective build variant, appended with ".test"
+
+ - We can change de application ID by defining the testApplicationId property the defaultConfig
+ or productFlavor block
+
+
+Change the package name
+ https://developer.android.com/studio/build/application-id#change_the_package_name
+
+
+ Although the project's package name matches the application ID by default, we can change it.
+
+ But be aware:
+    - The package name / project directory structure should always match the package attribute
+    in the AndroidManifest.xml file
+
+Android package attribute: The android build tools use the package attribute to:
+
+    - It applies this value of package attribute as the namespace for the app's generated R.java class
+
+        for example: If the value of package attr is com.br.product, the R class will be
+        com.br.product.R
+
+    - Resolve relative class names: (android:name=".MainActivitty")
+        It uses it to resolve any relative class names that are declared in the manifest file.
+        In above example, .MainActivity is resolved to com.br.product.MainActivirty
+
+Obs: To avoid name collisions with the app running under the test, the build tools generate R class
+for the test APK with a namespace based on the "testApplicationId" property defined in build.gradle
+file instead package attribute in AndroidManifest.xml file

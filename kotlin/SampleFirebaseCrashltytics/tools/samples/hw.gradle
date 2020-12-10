@@ -1,0 +1,12 @@
+// https://github.com/udacity/ud867/tree/master/1.01-Exercise-RunYourFirstTask
+
+
+
+task hello {
+    description "Simple task to print something in standart output"
+    group 'demo-sample'
+
+    doLast {
+        println("It's me ${0xff}")
+    }
+}
