@@ -1,0 +1,82 @@
+// https://github.com/udacity/ud867/tree/master/1.01-Exercise-RunYourFirstTask
+
+
+// run this task with following command
+// ./gradlew -b name_of_file.gradle name_of_task
+
+task hello {
+    description "Simple task to print something in standart output"
+    group 'demo-sample'
+
+    doLast {
+        println("It's me ${0xff}")
+    }
+}
+
+/**
+ * https://docs.gradle.org/current/userguide/writing_build_scripts.html
+ *
+ * Each build script is associated with a objet of type Project and as the build
+ * script executes, it configures this Project
+ *
+ * Project: It is an abstract concept. We can map a Gradle project to a software
+ * component that needs to be built, like a library or an app.
+ *
+ *
+ * Script with other targets
+ *
+ * Build scripts target Project object, there are settins scripts and init scripts
+ *
+ * */
+
+task status {
+    description "Simple task to print properties of Project Object"
+    group 'demo-sample'
+    //println name                // nome da task
+    //println project.name        // nome do projeto
+
+    println "$name, $project.name"
+
+
+    project.properties.each { entry ->
+        //println "Name: ${entry.key}, Vaukle: ${entry.value}"
+    }
+
+    project.properties.keySet().sort().each { key ->
+        //println "Property Name: $key -> ${project.properties[key]}"
+        //println "Property: $key -> ${project.findProperty(key)}"
+    }
+}
+
+
+/**
+ *
+ * Interface Script: https://docs.gradle.org/current/dsl/org.gradle.api.Script.html
+ * */
+
+/**
+ * https://docs.gradle.org/current/userguide/writing_build_scripts.html#sec:the_script_api
+ *
+ * When Gradle executes a build script (.gradle), it compiles the script and create a class
+ * which implements a Script interface.
+ *
+ *  - it means that all  methods and properties declared
+ *
+ *  - When Gradle executes a Kotlin build script (.gradle.kts), it compiles the script
+ *  in to a subclass of KotlinBuildScript
+ *
+ *      - The same expected in a Build Script about the Script interface happens in a
+ *      Kotlin build script with KotlinBuildScript interface
+ *
+ * Also there is a KotlinSettingsScript and KotlinInitScript types respectivily for settings
+ * script and init scripts
+ *
+ *
+ * */
+
+
+/**
+ * KotlinBuildScript
+ * https://gradle.github.io/kotlin-dsl-docs/api/org.gradle.kotlin.dsl/-kotlin-build-script/index.html
+ *
+ * */

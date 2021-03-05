@@ -1,0 +1,26 @@
+// https://docs.gradle.org/current/userguide/writing_build_scripts.html#sec:extra_properties
+
+sourceSets.all { ext.purpose = null }
+
+sourceSets {
+    main {
+        purpose = "production"
+    }
+
+    test {
+        purpose = "test"
+    }
+
+    plugin {
+        purpose = "production"
+    }
+}
+
+
+task matchingSourceSets {
+
+    group 'demo-sample'
+    sourceSets
+            .matching { it.purpose == "production" }
+            .each { println it.name }
+}

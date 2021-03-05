@@ -1,0 +1,25 @@
+https://developer.android.com/training/articles/security-ssl#Pinning
+https://medium.com/@appmattus/android-security-ssl-pinning-1db8acb6621e
+
+Comecar por aqui
+https://engenhariade.software/questions/145747/diferenca-entre-pinagem-de-certificado-e-pinagem-de-chave-pu
+
+https://levelup.gitconnected.com/bypassing-ssl-pinning-on-android-3c82f5c51d86
+
+https://learnworthy.net/securing-mobile-applications-with-cert-pinning/
+
+https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning
+
+https://blog.approov.io/securing-https-with-certificate-pinning-on-android
+
+https://github.com/wultra/ssl-pinning-android
+
+Pinning security
+https://security.stackexchange.com/questions/29988/what-is-certificate-pinning
+https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Public_Key_Pinning
+https://security.stackexchange.com/questions/29988/what-is-certificate-pinning
+
+
+Gradle
+https://docs.gradle.org/current/userguide/multi_project_builds.html#sec:decoupled_projects
