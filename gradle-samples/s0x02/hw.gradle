@@ -1,0 +1,10 @@
+// run this task with following command
+// ./gradlew.sh -b name_of_file.gradle name_of_task
+
+task simple_println {
+    description "Hey student! Run this one :D"
+    group "Our demo"
+    doLast {
+        println "Hello World! ${0xff} - $project.name"
+    }
+}

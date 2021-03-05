@@ -1,0 +1,134 @@
+Jacoco Report
+https://docs.gradle.org/current/dsl/org.gradle.testing.jacoco.tasks.JacocoReport.html
+
+----------------------------------------------------------------------------------------------------
+
+Build Lifecycle
+https://docs.gradle.org/current/userguide/build_lifecycle.html
+
+
+----------------------------------------------------------------------------------------------------
+
+Interface Project
+https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html
+
+Essa interface eh principal API para realizar comuncacao com o gradle a partir de um arquivo de build
+
+Da interface Project temos acesso a todas as features do gradle
+
+Lifecycle
+
+Existe uma relacao de um-para-um entre a interface Project e o arquivo build.gradle. Durante
+a inicializacao do build, Gradle construe u obejto do tipo Project para cada projeto que participa
+do build, da seguinte forma
+
+    - Cria um objeto Setting (https://docs.gradle.org/current/javadoc/org/gradle/api/initialization/Settings.html)
+    - Avalia o settings.gradle script, se estiver presente contra o objeto Settings criado anteriormente
+    - Usa o objeto setting para criar a hierarquia das instancias de Project
+    - Avalia cada Project executando seu respectivo build.gradle
+        - Os projetos sao avaliados usando a estrategia de "busca em largura", os projetos raiz (root)
+        sao avaliados primeiros que os seus projetos filhos (leaf)
+            - essa estrategia pode ser sobreescrita chamando evaluationDependsOnChildren()
+                https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html#evaluationDependsOnChildren--
+
+             -  Ou adicionando uma forma explicita de avaliacao chaman do evaluationDependsOn(String)
+                https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html#evaluationDependsOn-java.lang.String-
+
+
+Alguns metodos da interface Project
+
+afterEvaluate​(Closure closure)
+Adds a closure to be called immediately after this project has been evaluated.
+
+
+----------------------------------------------------------------------------------------------------
+Tasks
+
+Um projeto (instancia de Project) eh essencialmente uma colecao de objetos Tasks
+(https://docs.gradle.org/current/javadoc/org/gradle/api/Task.html),
+
+Cada task eh uma unidade que executa uma conjunto uma parte do trabalho
+    - Compilar classes
+    - executar testes unitarios
+    - zipar um arquivo WAR
+
+TaskContainer: https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/TaskContainer.html
+
+Podemos adicionar uma task a um projeto usando o metodo create(String)
+    - TaskContainer.create(String)
+
+Podemos achar uma task especifica atraves do método getByName(String)
+    - TaskContainer.getByName(String)
+
+
+----------------------------------------------------------------------------------------------------
+
+Dependency
+
+Um projeto tem suas dependencias, que eh tudo aquilo que ele depende para realizar suas tarefas.
+Um projeto geralmente gera artefatos que podem ser usados por outros projetos. Tais artefatos
+sao agrupados em configuracoes, podendo ser recuperados e enviados para repositorios
+
+
+ConfigurationContainer: https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/ConfigurationContainer.html
+
+Recupere o um objeto  de ConfigurationContainer atraves do método getConfiguration()
+(https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html#getConfigurations--) para gerenciar
+as configuracoes
+
+
+DependencyHandler: https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/dsl/DependencyHandler.html
+
+Recupere uma instancia de DependencyHandler através do método getDependencies()
+(https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html#getDependencies--)
+
+
+ArtifactHandler: https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/dsl/ArtifactHandler.html
+
+Use getArtifact() para recuperar uma instancia de ArtifactHandler()
+https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html#getArtifacts--
+
+
+RepositoryHandler: https://docs.gradle.org/current/javadoc/org/gradle/api/artifacts/dsl/RepositoryHandler.html
+
+Use gerRepositories() par gerenciar os repositorios
+
+
+
+----------------------------------------------------------------------------------------------------
+Dynamic Project Properties
+
+Gradlew executa o arquivo .gradle contra o objeto Project a fim de configura-lo. T0d0 metodo ou atributo
+usado pelo arquivo .gradle eh delegado atraves da instancia de Project associada a ele. Isso
+significa que todos os metodos e atributos definidos na interface Project podem ser acessados pelo
+arquivo
+
+Pode-se acessar uma instancia de Project atraves do atributo/propriedade project. Isso torna
+o script mais claro em alguns casos, por exemplo ao inves de acessar o nome do projeto atraves
+do atributo name fica mais claro acessar atraves de project.name
+
+
+Dynamic Methods
+
+Um project tem os denominados 5 'method scopes, os quais buscam por metodos
+    - O proprio objeto project
+    - O arquivo de build. Project procura por metodos que fora declarados no arquivo de build
+    - As extensoes adicionadas ao project via plugin
+        - Cada extensions e disponivel como um metodo que recebe uma clojure um Action
+        como parametro
+    - Metodos adicionados ao project via plugins
+    - as tasks do project. Um metodo eh a cada task, usando o nome dessa task como se fora o nome do metodo
+    que recebe uma Clojure or Action
+
+
+----------------------------------------------------------------------------------------------------
+Action
+https://docs.gradle.org/current/javadoc/org/gradle/api/Action.html
+
+
+----------------------------------------------------------------------------------------------------
+Convetion
+https://docs.gradle.org/current/javadoc/org/gradle/api/plugins/Convention.html
+
+----------------------------------------------------------------------------------------------------
+

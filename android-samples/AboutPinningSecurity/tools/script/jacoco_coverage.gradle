@@ -1,0 +1,22 @@
+apply plugin: 'jacoco'
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+    jacoco.excludes = ['jdk.internal.*']
+}
+
+/**
+ *  define uma clojure que sera executada logo apos a avaliacao
+ *  do projeto
+ * */
+project.afterEvaluate {
+    def list = (android.hasProperty('applicationVariants'))
+            ? android.'applicationVariants' : android.'libraryVariants'
+    list.all {
+        variant ->
+            def variantName = variant.name
+    }
+
+}
+
+

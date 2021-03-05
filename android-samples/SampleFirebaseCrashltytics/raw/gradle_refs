@@ -1,0 +1,30 @@
+Writing Build Scripts
+
+https://docs.gradle.org/current/userguide/writing_build_scripts.html
+
+
+Build Script Blocks
+
+    - SourceSet: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html
+
+        - It represents a logical group of Java source and resource files
+        - Covered in more details in
+            - https://docs.gradle.org/current/userguide/building_java_projects.html#sec:java_source_sets
+
+structure:
+
+sourceSets {
+    // properties
+    main {
+        // configure the java source for this set
+        java {
+
+        }
+    }
+}
+
+
+Task Types
+
+Exec:
+https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Exec.html
