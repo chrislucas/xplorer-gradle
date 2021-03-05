@@ -41,9 +41,10 @@ ext {
     createBuildTypeVariants = {
         closure ->
         ['debug', 'release'].each { type ->
-            closure(type)
+            //closure(type)
         }
     }
 }
+
 
 apply plugin: "com.github.spotbugs"

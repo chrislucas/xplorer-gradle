@@ -1,0 +1,90 @@
+android gradle DSL guide
+
+
+Docs
+https://docs.gradle.org/current/dsl/index.html
+
+Basics
+
+Gradle scripts are configuration scripts, as the scripts execute it configures an
+specific type object.
+
+    - For example: As a build script executes, it configures an object of type Project
+    - This object is called the delegate object of script
+
+Type of scrips : Delegate object
+Build Script    - Project
+Init Script     - Gradle
+Settings Script - Settings
+
+Each gradle script implements the Script interface
+
+    - it defines properties and methods which we can use in the scripts
+
+
+Core Type: Central types which in Gradle Scripts
+
+Project: T
+he main API interface thatwe can use to interact with Gradle from build file. From a Project
+we have programmatic access to all of Gradle's features
+
+
+Task:
+It represents a single atomic piece of work for a build, such as compiling classes or generating
+javadoc
+
+Gradle, Settings, ... so on
+
+Container Types: Its handle various declarative elements (dependencies, configurations
+, artifacts, tasks)
+
+TaskContainer: it is responsible for managing a set of Task instances.
+
+ConfigurationContainer: It is responsible for declaring and managing configurations
+
+
+Configuration
+https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.Configuration.html
+
+https://docs.gradle.org/current/userguide/kotlin_dsl.html
+
+Guides
+https://gradle.org/guides/
+
+Android Plugin DSL Reference
+https://google.github.io/android-gradle-dsl/3.4/
+
+
+Manual
+https://docs.gradle.org/current/userguide/userguide.pdf
+
+
+
+Tutorial 1)
+https://www.programmersought.com/article/4333762241/
+
+Tutorial 2)
+https://antonioleiva.com/kotlin-dsl-gradle/
+
+Build Script Basics
+https://docs.gradle.org/current/userguide/tutorial_using_tasks.html
+
+
+Gradle API classes
+https://developer.android.com/reference/tools/gradle-api/4.1/classes?hl=pt-br
+
+
+Android Gradle plugin release notes
+https://developer.android.com/studio/releases/gradle-plugin#updating-plugin
+
+Gradle Build Language Reference
+https://docs.gradle.org/current/dsl/index.html
+
+ - Build script blocks
+    - SourceSet: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.SourceSet.html
+        Represents a logical group of source and resource files
+
+
+
+Building Java & JVM projects:
+https://docs.gradle.org/current/userguide/building_java_projects.html#sec:java_source_sets

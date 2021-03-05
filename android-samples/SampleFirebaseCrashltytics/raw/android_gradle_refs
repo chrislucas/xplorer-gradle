@@ -1,0 +1,157 @@
+sourceSets
+https://developer.android.com/studio/build/gradle-tips?hl=pt-br
+
+
+Build
+https://developer.android.com/studio/build
+
+Gradle: An advanced build toolkit, to automate and manage the build process. Allow to define
+flexible custom build configurations.
+
+The build process: Responsible to convert the prooject into an Android Application Package (APK).
+
+App Module
+    - Source Code
+    - Resource Files
+    - AIDL Files
+
+Dependencies
+    - Lib modules
+    - AAR Librs
+    - JAR Lib
+
+
+ Both App Modules and Dependencies are compiled, generating a DEX file(s)
+
+ Compiled Resource + Debug|Release keystore + DEX files goes through the apk packager thats generates
+ debug or release APK
+
+ Summarizing, APK packager combine compiled resources and dex files, after that it signs the APK with
+ keystore
+
+
+ Build Configuration: https://developer.android.com/studio/build#build-config
+
+
+ Build Types:
+
+    It defines certains properties used by gradle when building and packing the app
+        - This properties are configured at different stages of development
+            - Debug, Homolog, Release
+
+
+Build Configuration Files: https://developer.android.com/studio/build#build-files
+
+
+Gradle DSL Reference: https://developer.android.com/reference/tools/gradle-api
+
+    - Package Index
+    https://developer.android.com/reference/tools/gradle-api/4.1/packages
+
+Top-level build file
+
+The build.gradle file that is located in root project directory defines build configuration for
+all modules in the project.
+
+    - The top level build.gradle file uses the buildscript block ({}) to define, gradle repositories,
+    and dependencies that are common between the modules
+
+    - allprojects block:
+        - Where we configure the repositories and dependencies used by all modules in the current
+        project.
+        - We must configure specific module dependencies in each module's build.gradle file
+
+Extra properties:  https://developer.android.com/studio/build#project_wide_properties
+
+For multi module project we are able to create properties that can be sharing between modules.
+
+In the top level build.gradle file we can use the ext {} block
+(https://docs.gradle.org/current/userguide/writing_build_scripts.html#sec:extra_properties)
+
+ext {
+    compileSdkVersion = 28
+    //
+    supportLibVersion = "28.0.0"
+    ...
+}
+
+
+Tips
+https://developer.android.com/studio/build/gradle-tips
+
+sourceSet block - We can use sourceSet block to configure where gradle look for source code files,
+resource files and android manifest xml file
+
+sourceSets {
+    // main block
+    main {
+           java.srcDirs = ['a', 'b' ...]
+
+            When we use multiples directories gradle uses all of them to collect
+            sources.
+            We should avoid make reference to a directory which is parent of 2 or more
+            other directories
+            res.srcDirs = ['a', 'b' ...]
+
+
+            manifest.srcFile = 'path ... AndroidManifest.xml'
+    }
+
+    // android test block. We are able to create additional
+    androidTest {
+        // We can use the setRoot property to define where the source files of test directory are.
+
+        setRoot
+    }
+
+}
+
+Configure project-wide properties:
+https://developer.android.com/studio/build/gradle-tips#configure-project-wide-properties
+
+We are able to define properties that can be shared between modules in the same project.
+
+Using the ext block in the top level build.gradle file, we can define properties that can be used
+by other modules, through the following syntax: rootProject.ext.property_name or
+${rootProject.ext.property_name} when string interpolation is necessary
+
+
+Configure multiple apk support:
+https://developer.android.com/studio/build/gradle-tips#configure-multiple-apk-support
+
+
+Change the test build type:
+https://developer.android.com/studio/build/gradle-tips#change-the-test-build-type
+
+By default all tests run against the debug build type.
+
+    - Using 'testBuildType' property inside android block
+        - testBuildType "release"
+
+
+
+Read properties files using gradle script/task
+
+task readLocalProperties {
+    def properties = rootProject.file("local.properties")
+    println(properties)
+    def kProperties = new Properties()
+    kProperties.load(new FileInputStream(properties))
+    println(kProperties)
+}
+
+Shared properties with Manifest xml file
+https://developer.android.com/studio/build/gradle-tips#share-properties-with-the-manifest
+
+In cases that we need to share some values between source code and AndroidManifest file, we can
+define a single property in module's build.gradle file to have access
+android {
+    defaultConfig {
+        // cria uma variavel
+        def someVariable = "value"
+        // criando o placeholder para recuperar o valor no manifest
+        manifestPlaceholders = [variableNameInManifestFile: someVariable]
+        // criando uma constante na classe BuildConfig
+        buildConfigField(Type["String", "Boolean" ...], "NAME", someVariable)
+    }
+}

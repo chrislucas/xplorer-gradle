@@ -1,0 +1,57 @@
+class Helper {
+    static <T> void function(Closure<T> fn) {
+        fn()
+    }
+}
+
+task simplePrintTask {
+    group 'sample'
+    description 'Uma task de teste.'
+    def ref = this
+    Helper.function {
+        println("it's me ${ref.name} ${0xff}")
+    }
+
+}
+
+task helloworld {
+    group 'sample'
+    description 'Uma task de teste.'
+    println("it's me ${0xff}")
+
+    println("Projects")
+    getAllprojects().forEach {
+        println(it)
+    }
+
+    println("Tasks")
+    getTasks().forEach {
+        println(it)
+    }
+
+    project.find {
+        ref ->
+            // extension
+            println android
+            // ref project
+            println ref
+            // default tasks
+            println(ref.defaultTasks)
+            println("Version: ${ref.version}")
+            println "Root Project: $rootProject"
+    }
+}
+
+
+task showProjectExtensions {
+    group 'sample'
+    description 'Uma task de teste para ver as extensions.'
+    println "Extensions"
+    project.with {
+        ref ->
+            ref.extensions.properties.each {
+                k, v ->
+                    println "k: $k, v: $v"
+            }
+    }
+}

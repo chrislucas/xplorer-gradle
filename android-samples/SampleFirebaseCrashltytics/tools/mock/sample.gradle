@@ -1,0 +1,9 @@
+
+// https://docs.gradle.org/current/dsl/org.gradle.api.DefaultTask.html
+
+class GreetingTask extends DefaultTask {
+    @TaskAction
+    def greet() {
+        println 'hello from GreetingTask'
+    }
+}

@@ -7,6 +7,35 @@ apply plugin: 'com.google.gms.google-services' // Google Services Gradle plugin
 apply plugin: 'com.google.firebase.crashlytics'
 
 apply from: "$rootDir/tools/quality-gate/static-analyze-spotbugs.gradle"
+//apply from: "$rootDir/tools/samples/hw.gradle"
+apply from: "$rootDir/tools/samples/sample-pro-sourceset.gradle"
+
+
+/**
+ * O script de build tem o que a documentacao chama de Delegate Object
+ * https://docs.gradle.org/current/userguide/writing_build_scripts.html
+ *
+ * */
+
+println "name: $name"
+println "Project name: $project.name"
+println "Project dir: $project.projectDir"
+
+/**
+ * ambos irao lancar na saida padrao o mesmo nome do projeto.
+ *
+ * A primeira declaracao usa a propriedade name do objeto Property. To-do
+ * script de build esta associado a um objeto do tipo Projhect ao passo que o script eh executado
+ * esse objeto eh configurado.
+ *
+ * A segunda declaracao a propriedade project, disponivel para qualquer script de build que retorna
+ * o objeto Project associado ao script.
+ *
+ * Se declararmos uma proipriedade ou metodo com o mesmo nome de um membro do Objeto Project, precisamos
+ * utilizar a propriedade project para distingui-los
+ *
+ * */
+
 
 android {
     compileSdkVersion 30
@@ -62,10 +91,9 @@ dependencies {
 
 }
 
-
+/*
 android.applicationVariants.all {
-    variant ->
-        println(variant)
+    variant -> println(variant)
 }
 
 task readLocalProperties {
@@ -75,3 +103,4 @@ task readLocalProperties {
     kProperties.load(new FileInputStream(properties))
     println(kProperties)
 }
+ */
